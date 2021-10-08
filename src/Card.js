@@ -18,7 +18,7 @@ const Card = (props) => {
         {props.data.features.map( ele => <li key={ele.name} className={classcheck(ele.valid)}><span className="fa-li">{checkmark(ele.valid)}</span>{ele.name}</li> )}
       </ul>
       <div className="d-grid">
-        <a href="" className="btn btn-primary text-uppercase">Button</a>
+        <button className="btn btn-primary text-uppercase">Button</button>
       </div>
       </div>
     </div>
