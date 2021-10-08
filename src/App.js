@@ -1,75 +1,27 @@
-import "./App.css";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "./Card";
-function App() {
+import "./Card.css";
+const Card = (props) => {
+  const checkmark = (props) =>{
+   return  props === "true" ? <i className="fas fa-check"></i> :<i className="fas fa-times"></i> ;
+  }
+  const classcheck = (props) =>{
+    return props === "true" ? "" :"text-muted";
+  }
   return (
-    <div className="top py-5">
-    <div className=" container">
-      <div className="row justify-content-center">
-        <Card
-          name="FREE"
-          price="$0"
-          users="Single User"
-          usersc="true"
-          storage="5GB Storage"
-          storagec="true"
-          project="Unlimited Public Projects"
-          projectc="true"
-          access="Community Access"
-          accessc="true"
-          privateprojects="Unlimited Private Projects"
-          privateprojectsc="false"
-          support="Dedicated Phone Support"
-          supportc="false"
-          subdomain="Free Subdomain"
-          subdomainc="false"
-          reports="Monthly Status Reports"
-          reportsc="false"
-        />
-        <Card
-          name="PLUS"
-          price="$9"
-          users="5 Users"
-          usersc="true"
-          storage="50GB Storage"
-          storagec="true"
-          project="Unlimited Public Projects"
-          projectc="true"
-          access="Community Access"
-          accessc="true"
-          privateprojects="Unlimited Private Projects"
-          privateprojectsc="true"
-          support="Dedicated Phone Support"
-          supportc="true"
-          subdomain="Free Subdomain"
-          subdomainc="true"
-          reports="Monthly Status Reports"
-          reportsc="false"
-        />
-        <Card
-          name="Pro"
-          price="$49"
-          users="Unlimited Users"
-          usersc="true"
-          storage="150GB Storage"
-          storagec="true"
-          project="Unlimited Public Projects"
-          projectc="true"
-          access="Community Access"
-          accessc="true"
-          privateprojects="Unlimited Private Projects"
-          privateprojectsc="true"
-          support="Dedicated Phone Support"
-          supportc="true"
-          subdomain="Free Subdomain"
-          subdomainc="true"
-          reports="Monthly Status Reports"
-          reportsc="true"
-        />
+    <div className="pri col-lg-4">
+      <div className="card mb-5 mb-lg-0 bg-white">
+      <h5 className="card-title text-muted text-uppercase text-center">{props.data.name}</h5>
+      <h6 className="card-price text-center">{props.data.price}<span className="h6">/month</span></h6>
+      <hr />
+      <ul className="fa-ul">
+        {props.data.features.map( ele => <li key={ele.name} className={classcheck(ele.valid)}><span className="fa-li">{checkmark(ele.valid)}</span>{ele.name}</li> )}
+      </ul>
+      <div className="d-grid">
+        <a href="www.google.com" className="btn btn-primary text-uppercase">Button</a>
+      </div>
       </div>
     </div>
-    </div>
   );
-}
-
-export default App;
+};
+export default Card;
